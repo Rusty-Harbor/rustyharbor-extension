@@ -1,0 +1,19 @@
+{
+  "name": "rustyharbor-extension",
+  "version": "1.0.0",
+  "description": "RustyHarbor trade helper — sends Steam trade offers on your behalf when you buy or sell on rustyharbor.com.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:firefox": "node scripts/build.mjs --target=firefox",
+    "build:chrome": "node scripts/build.mjs --target=chrome",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.270",
+    "@types/firefox-webext-browser": "120.0.4",
+    "esbuild": "0.24.0",
+    "typescript": "5.6.3"
+  }
+}

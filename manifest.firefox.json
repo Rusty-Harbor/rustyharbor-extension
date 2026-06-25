@@ -1,0 +1,80 @@
+{
+  "manifest_version": 3,
+  "name": "RustyHarbor Trade Helper",
+  "short_name": "RustyHarbor",
+  "version": "1.0.0",
+  "description": "Sends Steam trade offers on your behalf when you buy or sell skins on rustyharbor.com.",
+  "homepage_url": "https://rustyharbor.com",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "support@rustyharbor.com",
+      "strict_min_version": "115.0",
+      "data_collection_permissions": {
+        "required": ["authenticationInfo"],
+        "optional": []
+      }
+    }
+  },
+  "permissions": [
+    "storage",
+    "notifications",
+    "webRequest",
+    "webRequestBlocking",
+    "alarms",
+    "cookies"
+  ],
+  "host_permissions": [
+    "*://steamcommunity.com/*",
+    "*://api.steampowered.com/*",
+    "https://api.rustyharbor.com/*",
+    "https://rustyharbor.com/*",
+    "*://login.steampowered.com/*",
+    "*://steampowered.com/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/*"
+      ],
+      "matches": [
+        "https://rustyharbor.com/*"
+      ]
+    }
+  ],
+  "background": {
+    "page": "background.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://steamcommunity.com/*"
+      ],
+      "js": [
+        "content/steam.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://rustyharbor.com/*"
+      ],
+      "js": [
+        "content/site.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/index.html",
+    "default_title": "RustyHarbor",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png"
+    }
+  }
+}
